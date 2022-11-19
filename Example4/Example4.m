@@ -156,8 +156,14 @@ for j=1:K
    calC(((j-1)*P+1):(j*P),((j-1)*N+1):(j*N))=Ctilde{j};
    calOA(((j-1)*N+1):(j*N),((j-1)*N+1):(j*N))=AtildeProd(Atilde,1,j-1);
    calOI(((j-1)*N+1):(j*N),:)=eye(N);
-   for jj=2:(j-2)
-       calTA(((jj-1)*N+1):(jj*N),((jj-1)*N+1):(jj*N))=AtildeProd(Atilde,jj+1,jj-1);
+   for jj=1:(j-1)
+      if j~=1
+         if j~=K
+            calTA(((j-1)*N+1):(j*N),((jj-1)*N+1):(jj*N))=AtildeProd(Atilde,jj+1,j-1);
+         elseif j==K
+            calTA(((j-1)*N+1):(j*N),((jj-1)*N+1):(jj*N))=AtildeProd(Atilde,jj,j-1);
+         end
+      end
    end
    if j~=K
        calTB(((j-1)*N+1):(j*N),((j-1)*M+1):(j*M))=Btilde{j};
