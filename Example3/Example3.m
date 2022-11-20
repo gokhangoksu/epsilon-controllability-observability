@@ -113,3 +113,6 @@ x0
 
 %% Initial State Estimation (with Proposed Sampling Schedule)
 x0est=pinv(calO)*(y')
+
+%% Sum of Squared Errors
+SSE=sum((x0-x0est).^2)
