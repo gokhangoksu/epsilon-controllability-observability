@@ -181,3 +181,6 @@ yNew=zeros(1,K*P);
 yNew(1:2:K*P)=y(1,:);
 yNew(2:2:K*P)=y(2,:);
 x0est=pinv(calO)*(yNew'-calT*u')
+
+%% Sum of Squared Errors
+SSE=sum((x0-x0est).^2)
