@@ -33,12 +33,12 @@ K=[-3.4485   -8.0455   -0.2776    1.0903;
     0.0777   -0.6476   -2.7690    4.8456];
 
 %% Time Interval
-dt=0.01;
+dt=0.0001;
 t1=5;
 t=0:dt:t1;
 
 %% System Numerical Solution
-x0=[pi/2;0;pi/2;0];
+x0=[pi/4;0;pi/4;0];
 x=zeros(4,t1/dt+1);
 u=zeros(2,t1/dt);
 x(:,1)=x0;
@@ -51,7 +51,7 @@ toc
 
 %% Stabilizing State Feedback and State Space Response Plot
 plot(t,x,'LineWidth',2)
-axis([0 t1 -2 2])
+axis([0 t1 -1 1])
 xlabel({'$t$'},'Interpreter','latex') % R2018a and earlier
 set(gca,'fontsize',24)
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
@@ -91,7 +91,7 @@ P832=P(833,:)
 P874=P(875,:)
 
 %% System Numerical Solution (with Proposed Sampling Schedule)
-x0=[pi/2;0;pi/2;0];
+x0=[pi/4;0;pi/4;0];
 x=zeros(4,length(tSampl));
 u=zeros(2,length(tSampl));
 x(:,1)=x0;
@@ -129,7 +129,7 @@ toc
 %% Stabilizing State Feedback and State Space Response Plot (with Proposed Sampling Schedule)
 figure
 plot(tSampl,x,'LineWidth',2)
-axis([0 t1 -2 2])
+axis([0 t1 -1 1])
 xlabel({'$t_j$'},'Interpreter','latex') % R2018a and earlier
 set(gca,'fontsize',24)
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
